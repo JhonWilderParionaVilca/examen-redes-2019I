@@ -12,15 +12,19 @@
 \BOOKMARK [0][-]{chapter.3}{SOLUCI\323N DEFINITIVA}{}% 12
 \BOOKMARK [1][-]{section.3.1}{CONEXI\323N PARA CADA UNA DE LAS SEDES}{chapter.3}% 13
 \BOOKMARK [1][-]{section.3.2}{MARCO CONCEPTUAL}{chapter.3}% 14
-\BOOKMARK [1][-]{section.3.3}{Tipo de direcci\363n IP p\372blica}{chapter.3}% 15
-\BOOKMARK [1][-]{section.3.4}{estructura de conexi\363n para la interconexi\363n entre routers}{chapter.3}% 16
-\BOOKMARK [1][-]{section.3.5}{segmentaci\363n de subredes IP}{chapter.3}% 17
-\BOOKMARK [2][-]{subsection.3.5.1}{Sede Central Ayacucho}{section.3.5}% 18
-\BOOKMARK [1][-]{section.3.6}{segmentaci\363n de subredes VLAN}{chapter.3}% 19
-\BOOKMARK [2][-]{subsection.3.6.1}{Conexi\363n sucursal central}{section.3.6}% 20
-\BOOKMARK [2][-]{subsection.3.6.2}{Conexi\363n sucursal Lima}{section.3.6}% 21
-\BOOKMARK [2][-]{subsection.3.6.3}{Conexi\363n sucursal Arequipa}{section.3.6}% 22
-\BOOKMARK [2][-]{subsection.3.6.4}{Conexi\363n sucursal HUancayo}{section.3.6}% 23
-\BOOKMARK [1][-]{section.3.7}{\277Le parece acertada la decisi\363n del Jefe de Inform\341tica?, Sustente en profundidad su respuesta para cada caso}{chapter.3}% 24
-\BOOKMARK [2][-]{subsection.3.7.1}{SEGMENTACI\323N DE REDES}{section.3.7}% 25
-\BOOKMARK [2][-]{subsection.3.7.2}{LOCALIZACI\323N DE SERVIDORES}{section.3.7}% 26
+\BOOKMARK [2][-]{subsection.3.2.1}{SEDE AYACUCHO}{section.3.2}% 15
+\BOOKMARK [2][-]{subsection.3.2.2}{SEDE LIMA}{section.3.2}% 16
+\BOOKMARK [2][-]{subsection.3.2.3}{SEDE HUANCAYO}{section.3.2}% 17
+\BOOKMARK [2][-]{subsection.3.2.4}{SEDE AREQUIPA}{section.3.2}% 18
+\BOOKMARK [1][-]{section.3.3}{Tipo de direcci\363n IP p\372blica}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.4}{estructura de conexi\363n para la interconexi\363n entre routers}{chapter.3}% 20
+\BOOKMARK [1][-]{section.3.5}{segmentaci\363n de subredes IP}{chapter.3}% 21
+\BOOKMARK [2][-]{subsection.3.5.1}{Sede Central Ayacucho}{section.3.5}% 22
+\BOOKMARK [1][-]{section.3.6}{segmentaci\363n de subredes VLAN}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.6.1}{Ayacucho}{section.3.6}% 24
+\BOOKMARK [2][-]{subsection.3.6.2}{Conexi\363n sucursal Lima}{section.3.6}% 25
+\BOOKMARK [2][-]{subsection.3.6.3}{Conexi\363n sucursal Arequipa}{section.3.6}% 26
+\BOOKMARK [2][-]{subsection.3.6.4}{Conexi\363n sucursal Huancayo}{section.3.6}% 27
+\BOOKMARK [1][-]{section.3.7}{\277Le parece acertada la decisi\363n del Jefe de Inform\341tica?, Sustente en profundidad su respuesta para cada caso}{chapter.3}% 28
+\BOOKMARK [2][-]{subsection.3.7.1}{SEGMENTACI\323N DE REDES}{section.3.7}% 29
+\BOOKMARK [2][-]{subsection.3.7.2}{LOCALIZACI\323N DE SERVIDORES}{section.3.7}% 30

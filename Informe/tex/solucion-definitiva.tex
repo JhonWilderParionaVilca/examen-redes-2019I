@@ -13,12 +13,12 @@ En el caso planteado se har\'a uso de switchs de capa 2 para cumplir esta tarea.
 \item\textbf{ Capa de distribuci\'on: } Controla el flujo de tr\'afico de la red con el uso de pol\'iticas y traza los dominios de broadcast al realizar el enrutamiento de las funciones entre las VLANs definidas en la capa de acceso. Presentan disponibilidad y redundancia altas para asegurar la fiabilidad. Los switches de capa de distribuci\'on recopilan los datos de todos los switches de capa de acceso y los env\'ian a los switches de capa n\'ucleo. 
 \\
 En el caso de estudio presentado se har\'a uso de switch de capa 3.
-\item \textbf{Capa n\'ucleo:} Interconecta los dispositivos de la capa de distribuci\'on y puede conectarse a los recursos de Internet. El n\'ucleo debe estar disponible y ser redundante. Suelen contar con opciones de refrigeraci\'on más sofisticadas (alcanzan mayor temperatura por la carga de trabajo), con hardware que permite el cambio en caliente y QOS.
+\item \textbf{Capa n\'ucleo:} Interconecta los dispositivos de la capa de distribuci\'on y puede conectarse a los recursos de Internet. El n\'ucleo debe estar disponible y ser redundante. Suelen contar con opciones de refrigeraci\'on m\'as sofisticadas (alcanzan mayor temperatura por la carga de trabajo), con hardware que permite el cambio en caliente y QOS.
 \\
 Para el caso presentado se har\'a uso de routers de capa 3
 \end{enumerate}
 }
-\end{definicion}}
+\end{definicion}
 
 \begin{center}
 \includegraphics[scale=0.60]{jerarquico}
@@ -34,211 +34,319 @@ Para el caso presentado se har\'a uso de routers de capa 3
 
 El modelo de dise\~no jer\'arquico es el que implementaremos en el proyecto presente.
 
-\section{Tipo de direcci\'on IP p\'ublica}
+\subsection{SEDE AYACUCHO}
+\subsubsection{Red central}
+\includegraphics[scale=0.54]{img/central.png} 
+\begin{definicion}[]
+{
+En la red central planteamos dise\~nar un modelo jer\'arquico simple (lo adecuado ser\'ia agregar redundancia en la capa de distribuci\'on). La capa de acceso cuenta con 5 switchs de capa 2(80 host unidad administrativa y 20 unidad inform\'atica). 3 switchs ser\'an propios de vlan admi, 1 ser\'a compartido y 1 ser\'a parcialmente de vlan inform\'atica ya que no alcanza a ocupar todos los puertos disponibles(23 ya que 1 est\'a destinado a conectarse al switch central).El switch central nos permite extender la conectividad ya que con el podemos conectar hasta 23 switches en esta red.
+}
+\end{definicion}
+
+\subsubsection{Red Campus}
+\includegraphics[scale=0.54]{img/CAMPUS.png} 
+\begin{definicion}[]
+{
+En la red del campus se propone hacer una implementaci\'on igual a la anterior, para el primer edificio que cuenta con 160 host se har\'a uso de 160 host que son equivalentes a 7 switchs(23*7), sobrando inclusive 1 puerto.
+\\
+Para el edificio de sociales se necesitan 60 host para lo cual se hace uso de 3 switchs (3*23), sobrando inclusive 9 puertos.
+\\
+Para el edificio de educacion que requiere de 80 host se hace uso de 4 switchs (4*23) sobrando inclusive 12 puertos.
+}
+\end{definicion}
+
+
+
+
+\subsection{SEDE LIMA}
+\subsubsection{Red cono sur}
+\includegraphics[scale=0.48]{img/CONOSUR.png} 
+\begin{definicion}[]
+{
+Se requiere 240 host por ello, se hace uso de 11 swits (11*23), sobrando 13 puertos.
+}
+\end{definicion}
+
+
+\subsubsection{Red cono centro}
+\includegraphics[scale=0.48]{img/CONOCENTRO.png} 
+\begin{definicion}[]
+{
+Se requiere 340 host por ello, se hace uso de 15 swits (15*23), sobrando 5 puertos.
+}
+\end{definicion}
+
+
+\subsubsection{Red cono norte}
+\includegraphics[scale=0.48]{img/CONONORTE.png} 
+\begin{definicion}[]
+{
+Se requiere 420 host por ello, se hace uso de 19 swits (19*23), sobrando 17 puertos.
+}
+\end{definicion}
+
+
+
+\subsection{SEDE HUANCAYO}
+\includegraphics[scale=0.6]{img/HUANCAYO.png} 
 
 \begin{definicion}[]
 {
- Para la salida del router usaremos esta ip publica la cual permitir\'a brindar seguridad a nuestra red; para ello realizaremos una configuraci\'on NAT en los routers externos.
+Se requiere 180 host por ello, se hace uso de 8 swits (8*23), sobrando 4 puertos.
+}
+\end{definicion}
+
+\subsection{SEDE AREQUIPA}
+\includegraphics[scale=0.6]{img/AREQUIPA.png} 
+
+\begin{definicion}[]
+{
+Se requiere 220 host por ello, se hace uso de 10 swits (10*23), sobrando 10 puertos.
+}
+\end{definicion}
+
+
+\section{Tipo de direcci\'on IP p\'ublica}
+\begin{caja}[]
+{
+La direcci\'on IP puede ser p\'ublica o privada: La direcci\'on IP p\'ublica es un n\'umero \'unico que identifica nuestra red desde el exterior. La direcci\'on IP privada  identifica a un dispositivo conectado en nuestra red interna.
+}
+\end{caja}
+ Haremos uso de dos tipos de direcciones:
+\begin{definicion}[]
+{
+Direcci\'on externa:
+	Direcci\'on externa para la comunicaci\'on de sedes esta direcci\'on es conocida y servir\'a como seguridad para la salida de cada sede. Cada router permitir\'a convertir la direcci\'on interna a la externa al comunicarse a otra sede.
  \\
- Usaremos una ip p\'ublica de clase B para este ejemplo: 192.100.3.0\\
-A partir de ella realizando la segmentaci\'on obtendremos las ips de cada lan.
+ Nuestra direcci\'on externa ser\'a 179.6.194.12 que es de tipo B y es la que contratamos.
+ }
+\end{definicion}
+\begin{definicion}[]
+{
+Direcci\'on Interna:
+	Esta direcci\'on es la que segmentaremos para cada sede y esta ser\'a una direcci\'on interna.
+ \\
+ Nuestra direcci\'on externa ser\'a 172.16.0.0 que es de tipo B.
  }
 \end{definicion}
 
+
 \section{estructura de conexi\'on para la interconexi\'on entre routers}
-Se har\'a uso de una conexi\'on serial.\\
-\includegraphics[scale=0.5]{img/router.png} 
+Se har\'a una conexi\'on NAT con sobrecarga para poder brindar seguridad a la comunicaci\'on entre sedes.\\
+\includegraphics[scale=0.55]{img/ROUTERNAT.png} 
 
 \section{segmentaci\'on de subredes IP}
 
 \subsection{Sede Central Ayacucho}
-Usaremos la ip privada: 192.100.3.0
+Usaremos la ip INTERNA: 172.16.0.0
 \\
 Para hallar usaremos el m\'etodo de VLSM, con el tercer y cuarto octeto. \\
 
 \\
 Entonces tenemos:
 
-IP: 192.100.3.0
+IP: 172.16.0.0
 \\
-\textbf{SUMAMOS LOS COMPUTADORES QUE SE REQUIERE DE CADA SUCURSAL:}
+\textbf{ORDENAMOS LOS HOST QUE SE REQUIERE DE CADA SUCURSAL:}
 \\
 
 \begin{definicion}[]
 {
 \begin{enumerate}[label=\itembolasazules{}]
-\item Sede Lima: 1000 computadoras
-\item Sede Ayacucho: 400 computadoras
+\item Sede cono-norte: 420 computadoras
+\item Sede cono-centro: 340 computadoras
+\item Sede campus-ayacucho: 300 computadoras
+\item Sede cono-sur: 240 computadoras
 \item Sede Arequipa: 220 computadoras
-\item Sede Huanta: 180 computadoras\\
+\item Sede Huancayo: 180 computadoras
+\item Sede central-ayacucho: 100 computadoras\\
 \end{enumerate}
 }
-\end{definicion}}
+\end{definicion}
 
+\newpage
+%\usepackage{pdflscape}%poner en vertical hoja en el index
+\begin{landscape}
+\textheight = 15cm
+\textwidth = 25cm % Ancho
+\topmargin = -2cm
+\oddsidemargin = -1cm
 Para poder hacer la segmentaci\'on necesitamos: \\
-\includegraphics[scale=0.35]{img/octetos.png}
+\includegraphics[scale=0.5]{img/octetos.png}
+\\
 sabemos que la primera subred es la que nos dan por defecto entonces: \\
 
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[htbp]
-\begin{tabular}{@{}llllllll@{}}
-\toprule
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
 \rowcolor[HTML]{32CB00} 
-\textbf{subred} & \textbf{host} & \textbf{n} & \textbf{direccion de sub red} & \textbf{rango ip} & \textbf{gateway} & \textbf{mascara} & \textbf{/MSR} \\ \midrule
-lima            & 1000          &            & 135.40.0.0                    &                   &                  &                  &               \\ \bottomrule
+\textbf{subred}  & Host & \textbf{dir sub red} & \textbf{rango ip} & \textbf{broadcast} & \textbf{mascara} & \textbf{/MSR} \\ \hline
+cono-norte       & 420  & 172.16.0.0           &                   &                    &                  &               \\ \hline
+cono-centro      & 340  &                      &                   &                    &                  &               \\ \hline
+campus-ayacucho  & 300  &                      &                   &                    &                  &               \\ \hline
+cono-sur         & 240  &                      &                   &                    &                  &               \\ \hline
+Arequipa         & 220  &                      &                   &                    &                  &               \\ \hline
+Huancayo         & 180  &                      &                   &                    &                  &               \\ \hline
+central-Ayacucho & 100  &                      &                   &                    &                  &               \\ \hline
 \end{tabular}
 \end{table}
 
-Para hallar la siguiente sub red: vemos que requiere 1000 host buscamos este numero en la tabla o un valor mayor.
+
+Para hallar la siguiente sub red: vemos que requiere 420 host buscamos este numero en la tabla o un valor mayor.
 \\
-En este caso para 1000 es 1024; por lo tanto n= 4\\
-Quiere decir que la siguiente sub red tendr\'a un salto de 4, asi tenemos:
+En este caso para 420 es 512; por lo tanto n= 2\\
+Quiere decir que la siguiente sub red tendr\'a un salto de 2, asi tenemos:
 
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[htbp]
-\begin{tabular}{@{}llllllll@{}}
-\toprule
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
 \rowcolor[HTML]{32CB00} 
-\textbf{subred} & \textbf{host} & \textbf{n} & \textbf{direccion de sub red} & \textbf{rango ip} & \textbf{gateway} & \textbf{mascara} & \textbf{/MSR} \\ \midrule
-lima            & 1000          & 4          & 135.40.0.0                    &                   &                  &                  &               \\ \midrule
-Ayacucho        & 400           &            & 135.40.4.0                    &                   &                  &                  &              
+\textbf{subred}  & Host & \textbf{dir sub red} & \textbf{rango ip} & \textbf{broadcast} & \textbf{mascara} & \textbf{/MSR} \\ \hline
+cono-norte       & 420  & 172.16.0.0           &                   &                    &                  &               \\ \hline
+cono-centro      & 340  & 172.16.2.0           &                   &                    &                  &               \\ \hline
+campus-ayacucho  & 300  &                      &                   &                    &                  &               \\ \hline
+cono-sur         & 240  &                      &                   &                    &                  &               \\ \hline
+Arequipa         & 220  &                      &                   &                    &                  &               \\ \hline
+Huancayo         & 180  &                      &                   &                    &                  &               \\ \hline
+central-Ayacucho & 100  &                      &                   &                    &                  &               \\ \hline
 \end{tabular}
 \end{table}
+
 
 realizamos el mismo paso para los dem\'as:\\
 y nos quedaria:
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[htbp]
-\begin{tabular}{@{}llllllll@{}}
-\toprule
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
 \rowcolor[HTML]{32CB00} 
-\multicolumn{1}{|l|}{\cellcolor[HTML]{32CB00}\textbf{subred}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{host}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{n}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{direccion de sub red}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{rango ip}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{gateway}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{mascara}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{/MSR}} \\ \midrule
-\multicolumn{1}{|l|}{lima}                                    & \multicolumn{1}{l|}{1000}                                  & \multicolumn{1}{l|}{4}                                  & \multicolumn{1}{l|}{135.40.0.0}                                            & \multicolumn{1}{l|}{}                                          & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                      \\ \midrule
-\multicolumn{1}{|l|}{Ayacucho}                                & \multicolumn{1}{l|}{400}                                   & \multicolumn{1}{l|}{2}                                  & \multicolumn{1}{l|}{135.40.4.0}                                            & \multicolumn{1}{l|}{}                                          & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                      \\ \midrule
-\multicolumn{1}{|l|}{Arequipa}                                & \multicolumn{1}{l|}{220}                                   & \multicolumn{1}{l|}{1}                                  & \multicolumn{1}{l|}{135.40.6.0}                                            & \multicolumn{1}{l|}{}                                          & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                      \\ \midrule
-\multicolumn{1}{|l|}{Huancayo}                                & \multicolumn{1}{l|}{180}                                   & \multicolumn{1}{l|}{1}                                  & \multicolumn{1}{l|}{135.40.7.0}                                            & \multicolumn{1}{l|}{}                                          & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                      \\ \midrule
-                                                              &                                                            &                                                         & 135.40.8.0                                                                 &                                                                &                                                               &                                                               &                                                           
+\textbf{subred}  & Host & \textbf{dir sub red} & \textbf{rango ip} & \textbf{broadcast} & \textbf{mascara} & \textbf{/MSR} \\ \hline
+cono-norte       & 420  & 172.16.0.0           &                   &                    &                  &               \\ \hline
+cono-centro      & 340  & 172.16.2.0           &                   &                    &                  &               \\ \hline
+campus-ayacucho  & 300  & 172.16.4.0           &                   &                    &                  &               \\ \hline
+cono-sur         & 240  & 172.16.6.0           &                   &                    &                  &               \\ \hline
+Arequipa         & 220  & 172.16.7.0           &                   &                    &                  &               \\ \hline
+Huancayo         & 180  & 172.16.8.0           &                   &                    &                  &               \\ \hline
+central-Ayacucho & 100  & 172.16.9.0           &                   &                    &                  &               \\ \hline
 \end{tabular}
 \end{table}
 
-Para hallar la mascara de sub red lo que hacemos es sumar todos los n\'umeros que esten a la derecha de n incluido n; es decir para la sub red 135.40.0.0 n=4
+
+
+Para hallar la mascara de sub red lo que hacemos es sumar todos los n\'umeros que esten a la derecha de n incluido n; es decir para la sub red 135.40.0.0 n=2
 entonces sumamos: \\
-128+64+32+16+8+4 = 252\\
-Entonces la MSR seria = 255.255.252.0\\
-sacamos el /msr como hasta 4 ocupa 6 bits + los 16 bits del primer y segundo octeto ser\'ia = 22; asi tenemos:
-
-\begin{table}[htbp]
-\begin{tabular}{@{}llllllll@{}}
-\toprule
-\rowcolor[HTML]{32CB00} 
-\multicolumn{1}{|l|}{\cellcolor[HTML]{32CB00}\textbf{subred}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{host}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{n}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{direccion de sub red}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{rango ip}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{gateway}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{mascara}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{/MSR}} \\ \midrule
-\multicolumn{1}{|l|}{lima}                                    & \multicolumn{1}{l|}{1000}                                  & \multicolumn{1}{l|}{4}                                  & \multicolumn{1}{l|}{135.40.0.0}                                            & \multicolumn{1}{l|}{}                                          & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{255.255.252.0}                            & \multicolumn{1}{l|}{/22}                                   \\ \midrule
-\multicolumn{1}{|l|}{Ayacucho}                                & \multicolumn{1}{l|}{400}                                   & \multicolumn{1}{l|}{2}                                  & \multicolumn{1}{l|}{135.40.4.0}                                            & \multicolumn{1}{l|}{}                                          & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                      \\ \midrule
-\multicolumn{1}{|l|}{Arequipa}                                & \multicolumn{1}{l|}{220}                                   & \multicolumn{1}{l|}{1}                                  & \multicolumn{1}{l|}{135.40.6.0}                                            & \multicolumn{1}{l|}{}                                          & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                      \\ \midrule
-\multicolumn{1}{|l|}{Huancayo}                                & \multicolumn{1}{l|}{180}                                   & \multicolumn{1}{l|}{1}                                  & \multicolumn{1}{l|}{135.40.7.0}                                            & \multicolumn{1}{l|}{}                                          & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{}                                      \\ \midrule
-                                                              &                                                            &                                                         & 135.40.8.0                                                                 &                                                                &                                                               &                                                               &                                                           
-\end{tabular}
-\end{table}
-
+128+64+32+16+8+4+2 = 254\\
+Entonces la MSR seria = 255.255.254.0\\
 repetimos para todas las sub redes:
-
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[htbp]
-\begin{tabular}{@{}llllllll@{}}
-\toprule
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
 \rowcolor[HTML]{32CB00} 
-\multicolumn{1}{|l|}{\cellcolor[HTML]{32CB00}\textbf{subred}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{host}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{n}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{direccion de sub red}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{rango ip}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{gateway}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{mascara}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{/MSR}} \\ \midrule
-\multicolumn{1}{|l|}{lima}                                    & \multicolumn{1}{l|}{1000}                                  & \multicolumn{1}{l|}{4}                                  & \multicolumn{1}{l|}{135.40.0.0}                                            & \multicolumn{1}{l|}{}                                          & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{255.255.252.0}                            & \multicolumn{1}{l|}{/22}                                   \\ \midrule
-\multicolumn{1}{|l|}{Ayacucho}                                & \multicolumn{1}{l|}{400}                                   & \multicolumn{1}{l|}{2}                                  & \multicolumn{1}{l|}{135.40.4.0}                                            & \multicolumn{1}{l|}{}                                          & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{255.255.254.0}                            & \multicolumn{1}{l|}{/23}                                   \\ \midrule
-\multicolumn{1}{|l|}{Arequipa}                                & \multicolumn{1}{l|}{220}                                   & \multicolumn{1}{l|}{1}                                  & \multicolumn{1}{l|}{135.40.6.0}                                            & \multicolumn{1}{l|}{}                                          & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{255.255.255.0}                            & \multicolumn{1}{l|}{/24}                                   \\ \midrule
-\multicolumn{1}{|l|}{Huancayo}                                & \multicolumn{1}{l|}{180}                                   & \multicolumn{1}{l|}{1}                                  & \multicolumn{1}{l|}{135.40.7.0}                                            & \multicolumn{1}{l|}{}                                          & \multicolumn{1}{l|}{}                                         & \multicolumn{1}{l|}{255.255.255.0}                            & \multicolumn{1}{l|}{/24}                                   \\ \midrule
-                                                              &                                                            &                                                         & 135.40.8.0                                                                 &                                                                &                                                               &                                                               &                                                           
+\textbf{subred}  & Host & \textbf{dir sub red} & \textbf{rango ip} & \textbf{broadcast} & \textbf{mascara} & \textbf{/MSR} \\ \hline
+cono-norte       & 420  & 172.16.0.0           &                   &                    & 255.255.254.0    & /23           \\ \hline
+cono-centro      & 340  & 172.16.2.0           &                   &                    & 255.255.254.0    & /23           \\ \hline
+campus-ayacucho  & 300  & 172.16.4.0           &                   &                    & 255.255.254.0    & /23           \\ \hline
+cono-sur         & 240  & 172.16.6.0           &                   &                    & 255.255.255.0    & /24           \\ \hline
+Arequipa         & 220  & 172.16.7.0           &                   &                    & 255.255.255.0    & /24           \\ \hline
+Huancayo         & 180  & 172.16.8.0           &                   &                    & 255.255.255.0    & /24           \\ \hline
+central-Ayacucho & 100  & 172.16.9.0           &                   &                    &                  &               \\ \hline
 \end{tabular}
 \end{table}
 
-Para hallar el rango de IP para 135.40.0.0 seria 135.40.0.1 y para calcular la ultima ip tenemos que la siguiete sub red es 135.4.4.0 entonces el ultimo ip tiene que ser 135.4.3.254; el 3 sale de restar menos 1 al 2 bit de 135.4.4.0 y 254 sale ya que podemos tener 255 pero es reservado para el broadcast por ello solo es hasta 254.
-\\
-Sabemos que el gateway va ser la primera ip es decir 135.40.0.1 y el broadcast el ultimo +1 es decir 135.40.3.255; y asi va ser para todos;
+En el caso de la central de ayacucho vemos que se pasa al 4 octeto en ese caso lo que hacemos es buscar ahi un numero >= a 100 entonces n=128 y los que estan a la derecha en el cuarto octeto no seria nadie; por ello quedaria 128\\
+Entonces el MSR seria 255.255.255.128\\
 
-
-
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[htbp]
-\begin{tabular}{@{}lllllll@{}}
-\toprule
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
 \rowcolor[HTML]{32CB00} 
-\multicolumn{1}{|l|}{\cellcolor[HTML]{32CB00}\textbf{subred}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{direccion de sub red}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{rango ip}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{gateway}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{broadcast}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{mascara}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{/MSR}} \\ \midrule
-\multicolumn{1}{|l|}{lima}                                    & \multicolumn{1}{l|}{135.40.0.0}                                            & \multicolumn{1}{l|}{135.40.0.1-135.40.3.254}                   & \multicolumn{1}{l|}{135.40.0.1}                               & \multicolumn{1}{l|}{135.40.3.255}                               & \multicolumn{1}{l|}{255.255.252.0}                            & \multicolumn{1}{l|}{/22}                                   \\ \midrule
-\multicolumn{1}{|l|}{Ayacucho}                                & \multicolumn{1}{l|}{135.40.4.0}                                            & \multicolumn{1}{l|}{135.40.4.1-135.40.5.254}                   & \multicolumn{1}{l|}{135.40.4.1}                               & \multicolumn{1}{l|}{135.40.5.255}                               & \multicolumn{1}{l|}{255.255.254.0}                            & \multicolumn{1}{l|}{/23}                                   \\ \midrule
-\multicolumn{1}{|l|}{Arequipa}                                & \multicolumn{1}{l|}{135.40.6.0}                                            & \multicolumn{1}{l|}{135.40.6.1-135.40.6.254}                   & \multicolumn{1}{l|}{135.40.6.1}                               & \multicolumn{1}{l|}{135.40.6.255}                               & \multicolumn{1}{l|}{255.255.255.0}                            & \multicolumn{1}{l|}{/24}                                   \\ \midrule
-\multicolumn{1}{|l|}{Huancayo}                                & \multicolumn{1}{l|}{135.40.7.0}                                            & \multicolumn{1}{l|}{135.40.7.1-135.40.7.254}                   & \multicolumn{1}{l|}{135.40.7.1}                               & \multicolumn{1}{l|}{135.40.7.255}                               & \multicolumn{1}{l|}{255.255.255.0}                            & \multicolumn{1}{l|}{/24}                                   \\ \midrule
-                                                              & 135.40.8.0                                                                 &                                                                &                                                               &                                                                 &                                                               &                                                           
+\textbf{subred}  & Host & \textbf{dir sub red} & \textbf{rango ip} & \textbf{broadcast} & \textbf{mascara} & \textbf{/MSR} \\ \hline
+cono-norte       & 420  & 172.16.0.0           &                   &                    & 255.255.254.0    & /23           \\ \hline
+cono-centro      & 340  & 172.16.2.0           &                   &                    & 255.255.254.0    & /23           \\ \hline
+campus-ayacucho  & 300  & 172.16.4.0           &                   &                    & 255.255.254.0    & /23           \\ \hline
+cono-sur         & 240  & 172.16.6.0           &                   &                    & 255.255.255.0    & /24           \\ \hline
+Arequipa         & 220  & 172.16.7.0           &                   &                    & 255.255.255.0    & /24           \\ \hline
+Huancayo         & 180  & 172.16.8.0           &                   &                    & 255.255.255.0    & /24           \\ \hline
+central-Ayacucho & 100  & 172.16.9.0           &                   &                    & 255.255.255.128  & /25           \\ \hline
 \end{tabular}
 \end{table}
 
-Nos qued\'o esta tabla que usaremos para hacer la segmentaci\'on en el packet tracer.
-%Nos falta las sub redes para las conexiones seriales de los router, para ello procedemos a calcularlas.\\
-%como haremos una conexion con 6 seriales tendriamos que cada conexion requiere de 2 ips:\\
-%tenemos la red que nos qued\'o 135.40.8.0
-%
-%realizamos los mismos pasos solo que como el host es 2 nos queda sumar en el cuarto octeto asi tenemos:
-%
-%\begin{table}[htbp]
-%\begin{tabular}{@{}lllllll@{}}
-%IP: 135.40.8.0                                                &                                                   &                                                                   &                                                                &                                                                 &                                                               &                                                            \\ \midrule
-%\rowcolor[HTML]{32CB00} 
-%\multicolumn{1}{|l|}{\cellcolor[HTML]{32CB00}\textbf{subred}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}Host} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{dir sub red}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{rango ip}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{broadcast}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{mascara}} & \multicolumn{1}{l|}{\cellcolor[HTML]{32CB00}\textbf{/MSR}} \\ \midrule
-%\multicolumn{1}{|l|}{A}                                       & \multicolumn{1}{l|}{2}                            & \multicolumn{1}{l|}{135.40.8.0}                                   & \multicolumn{1}{l|}{135.40.8.1-135.40.8.2}                     & \multicolumn{1}{l|}{135.40.8.3}                                 & \multicolumn{1}{l|}{255.255.255.252}                          & \multicolumn{1}{l|}{/30}                                   \\ \midrule
-%\multicolumn{1}{|l|}{B}                                       & \multicolumn{1}{l|}{2}                            & \multicolumn{1}{l|}{135.40.8.4}                                   & \multicolumn{1}{l|}{135.40.8.5-135.40.8.6}                     & \multicolumn{1}{l|}{135.40.8.7}                                 & \multicolumn{1}{l|}{255.255.255.252}                          & \multicolumn{1}{l|}{/30}                                   \\ \midrule
-%\multicolumn{1}{|l|}{C}                                       & \multicolumn{1}{l|}{2}                            & \multicolumn{1}{l|}{135.40.8.8}                                   & \multicolumn{1}{l|}{135.40.8.9-135.40.8.10}                    & \multicolumn{1}{l|}{135.40.8.11}                                & \multicolumn{1}{l|}{255.255.255.252}                          & \multicolumn{1}{l|}{/30}                                   \\ \midrule
-%\multicolumn{1}{|l|}{D}                                       & \multicolumn{1}{l|}{2}                            & \multicolumn{1}{l|}{135.40.8.12}                                  & \multicolumn{1}{l|}{135.40.8.13-13.40.8.14}                    & \multicolumn{1}{l|}{135.40.8.15}                                & \multicolumn{1}{l|}{255.255.255.252}                          & \multicolumn{1}{l|}{/30}                                   \\ \midrule
-%\multicolumn{1}{|l|}{E}                                       & \multicolumn{1}{l|}{2}                            & \multicolumn{1}{l|}{135.40.8.16}                                  & \multicolumn{1}{l|}{135.40.8.17-135.40.8.18}                   & \multicolumn{1}{l|}{135.40.8.19}                                & \multicolumn{1}{l|}{255.255.255.252}                          & \multicolumn{1}{l|}{/30}                                   \\ \midrule
-%\multicolumn{1}{|l|}{F}                                       & \multicolumn{1}{l|}{2}                            & \multicolumn{1}{l|}{135.40.8.20}                                  & \multicolumn{1}{l|}{135.40.8.21-135.40.8.22}                   & \multicolumn{1}{l|}{135.40.8.23}                                & \multicolumn{1}{l|}{255.255.255.252}                          & \multicolumn{1}{l|}{/30}                                   \\ \bottomrule
-%\end{tabular}
-%\end{table}
+
+Terminamos de llenar las ips y nos quedaria:
+
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[htbp]
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|}
+\hline
+\rowcolor[HTML]{32CB00} 
+\textbf{subred}  & \textbf{Host} & \textbf{dir sub red} & \textbf{gateway} & \textbf{primer ip} & \textbf{ultimo ip} & \textbf{broadcast} & \textbf{mascara} & \textbf{/MSR} \\ \hline
+cono-norte       & 420           & 172.16.0.0           & 172.16.0.1       & 172.16.0.2         & 172.16.1.254       & 172.16.1.255       & 255.255.254.0    & /23           \\ \hline
+cono-centro      & 340           & 172.16.2.0           & 172.16.2.1       & 172.16.2.2         & 172.16.3.254       & 172.16.3.255       & 255.255.254.0    & /23           \\ \hline
+campus-ayacucho  & 300           & 172.16.4.0           & 172.16.4.1       & 172.16.4.2         & 172.16.5.254       & 172.16.5.255       & 255.255.254.0    & /23           \\ \hline
+cono-sur         & 240           & 172.16.6.0           & 172.16.6.1       & 172.16.6.2         & 172.16.6.254       & 172.16.6.255       & 255.255.255.0    & /24           \\ \hline
+Arequipa         & 220           & 172.16.7.0           & 172.16.7.1       & 172.16.7.2         & 172.16.7.254       & 172.16.7.255       & 255.255.255.0    & /24           \\ \hline
+Huancayo         & 180           & 172.16.8.0           & 172.16.8.1       & 172.16.8.2         & 172.16.8.254       & 172.16.8.255       & 255.255.255.0    & /24           \\ \hline
+central-Ayacucho & 100           & 172.16.9.0           & 172.16.9.1       & 172.16.9.2         & 172.16.9.126       & 172.16.9.127       & 255.255.255.128  & /25           \\ \hline
+\end{tabular}
+\end{table}
+
+
+\end{landscape}
+
 
 \section{segmentaci\'on de subredes VLAN}
-\subsection{Conexi\'on sucursal central}
-\includegraphics[scale=0.4]{img/vlans.png} 
+
+Realizaremos la segmentaci\'on por puertos.\\
+\subsection{Ayacucho}
+
 \subsubsection{sede central administrativa}
-Como en total tenemos 100 computadores, usaremos 5 switchs.
-5 switchs = 120 puertos pero se usa 1 de cada switch para conectar al switch general que nos ayudará para poder expandir m\'as nuestra red en el futuro.
-Entonces nos quedar\'ia 115 puertos(cada switch con 23 puertos utilizables)
-\\
-Usaremos 3 switchs completos para la VLAN10 unidad administrativa=69 + 11 puertos de un 4 switch=80 puertos configurados para VLAN10.
-\\
-Ya que en el switch 4 solo resta con 13(23-11) puertos lo mas ideal seria asignar 20 puertos del switch 5 a la VLAN20 unidad inform\'atica.
+\includegraphics[scale=0.52]{img/vlancentral.png} 
 
-\\
-\\
 \textbf{CONFIGURAMOS LOS SWITCHS}
-
-\includegraphics[scale=0.85]{img/switchvlan.png}
-\\
-\includegraphics[scale=0.4]{img/vlan10.png} 
- \\\\
- y hacemos lo mismo con los dem\'as switchs.
- \\\\
- \includegraphics[scale=0.4]{img/vlan20.png} 
  
  \subsubsection{Campus Universitario}
- Para el campus universitario definiremos 3 vlans.
- para simplificar los procesos implementaremos solo 1 switch para cada edificio.
- como cada facultad se encuentra en cada edificio a cada uno le corresponder\'a un switch configurado como su vlan.
- 
-\includegraphics[scale=0.9]{img/campus.png} 
+\includegraphics[scale=0.35]{img/VLANCAMPUS.png} 
 \subsection{Conexi\'on sucursal Lima}
-para todas las sucursales para reducir el modelo a un modelo sencillo. asignamos dos switchs en el cual esta configurado las 3 vlans ya que solo existe un edificio en el que estudian los 3 estudiantes.
 \subsubsection{sucursal cono norte}
-\includegraphics[scale=1]{img/cononorte.png} 
+\includegraphics[scale=0.45]{img/VLANNORTE.png} \\
 \subsubsection{sucursal cono centro}
-\includegraphics[scale=1]{img/conocentro.png} 
- \subsubsection{sucursal cono sur}
- \includegraphics[scale=1]{img/conosur.png} 
+\includegraphics[scale=0.45]{img/VLANCENTRO.png} 
+
+\subsubsection{sucursal cono sur}
+\includegraphics[scale=0.45]{img/VLANSUR.png} 
 
 \subsection{Conexi\'on sucursal Arequipa}
 ser\'an de igual manera que de la sucursal de lima.
 \\
-\includegraphics[scale=1]{img/arequipa.png} 
-\subsection{Conexi\'on sucursal HUancayo}
+\includegraphics[scale=0.45]{img/VLANAREQUIPA.png} 
+
+\subsection{Conexi\'on sucursal Huancayo}
 ser\'an de igual manera que de la sucursal de lima.
 \\
-\includegraphics[scale=1]{img/huancayo.png} 
+\includegraphics[scale=0.45]{img/VLANHUANCAYO.png} 
+
 
 \section{\¿Le parece acertada la decisi\'on del Jefe de Inform\'atica?, Sustente en profundidad su respuesta para cada caso}
 \subsection{SEGMENTACI\'ON DE REDES}
@@ -250,7 +358,7 @@ segmentaci\'on basada en subredes IP para cada una de las sucursales.
 \item Qu\'e cada una de las Facultades sean segmentadas utilizando VLAN.
 \end{enumerate}
 }
-\end{definicion}}
+\end{definicion}
 Para este caso la utilizaci\'on de una ip publica mejora mucho la seguridad de una red ya que al salir hacia una wan o internet estamos propensos a sufrir suplantacion de identidad entre muchas otras cosas.
 \\
 la ip publica hace que esto sea mas dificil de realizar ya q siempre saldremos al exterior con una ip publica de conocimiento de todos.\\
@@ -275,7 +383,7 @@ din\'amicas a las tres sedes de Lima solamente.
 \end{enumerate}
 }
 
-\end{definicion}}
+\end{definicion}
 Lo mas recomendable deber\'ia ser tener todos esos servidores en un ambiente m\'as adecuado, ya que no se menciona que la casona cuente con lo requerido para que se cumplan los est\'andares basicos que se requiere.
 \\
 Se deberia de separar con una granja de servidores y asi provea servicio a todos; los servidores deber\'ian de estar ubicados todos juntos en un lugar adecuado.
