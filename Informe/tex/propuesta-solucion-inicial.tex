@@ -1,0 +1,81 @@
+  
+\chapter{PROPUESTA DE SOLUCI\'ON INICIAL}
+
+%=====================================
+\section{REQUERIMIENTOS}
+\subsection{Sede Central Ayacucho}
+\subsubsection{Sede Central Administrativa}
+\begin{definicion}[]
+{
+\begin{enumerate}[label=\itembolasazules{}]
+\item Todas las Unidades Administrativas: 80 computadoras
+\item Unidad de Inform\'atica: 20 computadoras
+\end{enumerate}
+}
+\end{definicion}}
+\subsubsection{Campus Universitario}
+\begin{definicion}[]
+{
+\begin{enumerate}[label=\itembolasazules{}]
+\item Facultad de Ingenier\'ia: 160 computadoras
+\item Facultad de Sociales: 60 computadoras
+\item Facultad de Educaci\'on: 80 computadoras
+\end{enumerate}
+}
+\end{definicion}}
+
+\subsection{Sucursal Lima}
+\subsubsection{Sucursal Cono Norte}
+\begin{caja}[]
+420 computadoras
+\end{caja}
+
+\subsubsection{Sucursal Cono Centro}
+\begin{caja}[]
+240 computadoras
+\end{caja}
+
+\subsubsection{Sucursal Cono Sur}
+\begin{caja}[]
+340 computadoras
+\end{caja}
+
+\subsection{Sucursal Arequipa}
+\begin{caja}[]
+220 computadoras
+\end{caja}
+\subsection{Sucursal Huancayo}
+\begin{caja}[]
+180 computadoras
+\end{caja}
+
+\section{PROPUESTA}
+\subsection{SEGMENTACI\'ON DE REDES}
+\begin{definicion}[]
+{
+\begin{enumerate}[label=\itembolasazules{}]
+\item Qu\'e se adquiera una direcci\'on IP p\'ublica y que se utilice
+segmentaci\'on basada en subredes IP para cada una de las sucursales.
+\item Qu\'e cada una de las Facultades sean segmentadas utilizando VLAN.
+\end{enumerate}
+}
+\end{definicion}}
+\subsection{LOCALIZACI\'ON DE SERVIDORES}
+\begin{definicion}[]
+{
+\begin{enumerate}[label=\itembolasazules{}]
+\item Que la Oficina de Inform\'atica en Ayacucho tenga.
+
+\begin{enumerate}[label=\itembolas{}]
+\item 01 Servidor de DHCP, que asigne direcciones IP din\'amicas a las
+sedes de Ayacucho, Arequipa y Huancayo.
+\item 1 Servidor de DNS.
+\item 1 Servidor Web que contenga las p\'aginas web de cada una de las
+sedes (Ayacucho, Lima, Arequipa y Huancayo).
+\end{enumerate}
+
+\item Qu\'e la Sede Lima Cono Central tenga: 01 Servidor para servicio de DHCP, que asigne direcciones IP
+din\'amicas a las tres sedes de Lima solamente.
+\end{enumerate}
+}
+\end{definicion}}

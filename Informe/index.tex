@@ -1,0 +1,58 @@
+\documentclass[12pt,fleqn,x11names,table]{report}                                                  
+\usepackage[text={15cm,25cm},centering,headsep=20pt,top=0.8in, bottom = 0.8in,letterpaper,showframe=false]{geometry}
+\input{desing/Archivo_Diseno_Libro_LaTeX_RevistaMatematica_ITCR}
+%==============config global==============
+\renewcommand{\tablename}{Tabla}
+\definecolor{styrmitcrwcgray1}{rgb}{0.2,0.2,0.2}
+\definecolor{wcgray}{rgb}{0,0.1333,0.3333}
+\usetikzlibrary{arrows}
+\usepackage{makeidx}
+\makeindex
+\usepackage{fourier}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\DeclareGraphicsExtensions {.jpg,.pdf,.png}
+\graphicspath{ {./img/} }
+%ITEM DE NUMERACION
+\newcommand*{\itembolasazules}[1]{% bolas 3D
+\footnotesize\protect\tikz[baseline=-3pt]%
+\protect\node[scale=0.68, circle, shade, ball
+color=green]{\color{azulF}\Large\bf#1};}
+
+\newcommand*{\itembolas}[1]{% bolas 3D
+\footnotesize\protect\tikz[baseline=-3pt]%
+\protect\node[scale=0.67, circle, shade, ball
+color=azulF]{\color{azulF}\Large\bf#1};}
+%================================================
+\begin{document}
+
+\pagenumbering{arabic} 
+\parindent=0mm    % Sin sangría
+\pagestyle{fancy} %decoracion de cabecera numero de pagina
+%------------------------------------------------------------------------
+%CARÁTULA
+%==========================================================
+\input{tex/caratula.tex}
+%=========FIN CARATULA==================================
+%==============================================================================  
+%	Tabla de contenidos
+%--------------------------------------------------------------------------------
+\tableofcontents
+%====fin tabla de contenido==========
+
+%CAPITULOI
+%==========================================================
+\input{tex/caso-estudio.tex}
+%=========FIN objetivos=========
+
+%capituloII
+%==========================================================
+\input{tex/propuesta-solucion-inicial.tex}
+%=========FIN objetivos=========
+
+%procedimiento
+%==========================================================
+\input{tex/solucion-definitiva.tex}
+%=========FIN objetivos=========
+
+\end{document}
