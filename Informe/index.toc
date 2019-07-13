@@ -42,8 +42,8 @@
 \contentsline {subsubsection}{sucursal cono centro}{20}{section*.24}
 \contentsline {subsubsection}{sucursal cono sur}{21}{section*.25}
 \contentsline {subsection}{\numberline {3.6.3}Conexi\'on sucursal Arequipa}{21}{subsection.3.6.3}
-\contentsline {subsection}{\numberline {3.6.4}Conexi\'on sucursal Huancayo}{21}{subsection.3.6.4}
-\contentsline {section}{\numberline {3.7}\IeC {\textquestiondown }Le parece acertada la decisi\'on del Jefe de Inform\'atica?, Sustente en profundidad su respuesta para cada caso}{22}{section.3.7}
-\contentsline {subsection}{\numberline {3.7.1}SEGMENTACI\'ON DE REDES}{22}{subsection.3.7.1}
-\contentsline {subsection}{\numberline {3.7.2}LOCALIZACI\'ON DE SERVIDORES}{22}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.6.4}Conexi\'on sucursal Huancayo}{22}{subsection.3.6.4}
+\contentsline {section}{\numberline {3.7}\IeC {\textquestiondown }Le parece acertada la decisi\'on del Jefe de Inform\'atica?, Sustente en profundidad su respuesta para cada caso}{23}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}SEGMENTACI\'ON DE REDES}{23}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}LOCALIZACI\'ON DE SERVIDORES}{23}{subsection.3.7.2}
 \contentsfinish 
